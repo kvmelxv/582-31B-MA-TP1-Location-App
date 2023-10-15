@@ -52,8 +52,8 @@ CREATE TABLE IF NOT EXISTS `LocationAppartement`.`Utilisateur_has_Appartement` (
   `Utilisateur_Username` VARCHAR(50) NOT NULL,
   `Appartement_idAppartement` INT NOT NULL,
   PRIMARY KEY (`Utilisateur_Username`, `Appartement_idAppartement`),
-  INDEX `fk_Utilisateur_has_Appartement_Appartement1_idx` (`Appartement_idAppartement` ASC) VISIBLE,
-  INDEX `fk_Utilisateur_has_Appartement_Utilisateur_idx` (`Utilisateur_Username` ASC) VISIBLE,
+  INDEX `fk_Utilisateur_has_Appartement_Appartement1_idx` (`Appartement_idAppartement` ASC),
+  INDEX `fk_Utilisateur_has_Appartement_Utilisateur_idx` (`Utilisateur_Username` ASC),
   CONSTRAINT `fk_Utilisateur_has_Appartement_Utilisateur`
     FOREIGN KEY (`Utilisateur_Username`)
     REFERENCES `LocationAppartement`.`Utilisateur` (`Username`)
@@ -77,8 +77,8 @@ CREATE TABLE IF NOT EXISTS `LocationAppartement`.`Reservation` (
   `Utilisateur_Username` VARCHAR(50) NOT NULL,
   `Appartement_idAppartement` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_Reservation_Utilisateur1_idx` (`Utilisateur_Username` ASC) VISIBLE,
-  INDEX `fk_Reservation_Appartement1_idx` (`Appartement_idAppartement` ASC) VISIBLE,
+  INDEX `fk_Reservation_Utilisateur1_idx` (`Utilisateur_Username` ASC),
+  INDEX `fk_Reservation_Appartement1_idx` (`Appartement_idAppartement` ASC),
   CONSTRAINT `fk_Reservation_Utilisateur1`
     FOREIGN KEY (`Utilisateur_Username`)
     REFERENCES `LocationAppartement`.`Utilisateur` (`Username`)
@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `LocationAppartement`.`Commentaire` (
   `DatePublication` DATE NULL,
   `Utilisateur_Username` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`idCommentaire`),
-  INDEX `fk_Commentaire_Utilisateur1_idx` (`Utilisateur_Username` ASC) VISIBLE,
+  INDEX `fk_Commentaire_Utilisateur1_idx` (`Utilisateur_Username` ASC),
   CONSTRAINT `fk_Commentaire_Utilisateur1`
     FOREIGN KEY (`Utilisateur_Username`)
     REFERENCES `LocationAppartement`.`Utilisateur` (`Username`)

@@ -1,0 +1,47 @@
+h1 {
+    text-align: center;
+    margin: 1em auto 1.5em auto;
+    text-decoration: underline;
+}
+
+form { 
+    display: flex;
+    flex-flow: column;
+    width: 35%;
+    margin: auto;
+    padding: 1em;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+form > label {
+    width: 60%;
+    margin: 1em auto 0.5em auto;
+    text-align: center;
+}
+
+form > input {
+    width: 60%;
+    margin: auto;
+    padding: 1em;  
+    border-style: none;
+    border-bottom: 1px solid black ; 
+
+}
+
+form > select {
+    width: 25%;
+    margin: 0.5em auto 0.5em auto;
+    padding: 0.5em;
+    cursor: pointer;
+}
+
+form > .btn {
+    width: 25%;
+    margin: 1em auto 0.5em auto;
+    padding: 0.8em;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
