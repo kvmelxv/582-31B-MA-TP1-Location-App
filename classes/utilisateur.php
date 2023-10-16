@@ -33,10 +33,22 @@ class Utilisateur extends PDO {
         foreach($data as $key => $value){
             $stmt->bindValue(":$key", $value);
         }
-        $stmt->execute();
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    
+        
+    }
 
-        return $this->lastInsertId();
+    public function validateFormData($data) {
 
+        if (empty($data['username']) || empty($data['nom']) || empty($data['prenom']) || empty($data['telephone']) || empty($data['courriel']) || empty($data['Type_idType'])) {
+            return false;
+        }
+
+        return true;
     }
 
     

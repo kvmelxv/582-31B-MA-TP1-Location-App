@@ -20,6 +20,7 @@ $client = $utilisateur->select('utilisateur', 'Nom')
         <tr>
             <th>Nom</th>
             <th>Prénom</th>
+            <th>Username</th>
             <th>Téléphone</th>
             <th>Courriel</th>
             <th>Type d'utilisateur</th>
@@ -33,6 +34,7 @@ $client = $utilisateur->select('utilisateur', 'Nom')
             <tr>
                 <td><?= $row['Nom']?></a></td>
                 <td><?= $row['Prenom']?></td>
+                <td><?= $row['Username']?></a></td>
                 <td><?= $row['Courriel']?></td>
                 <td><?= $row['Telephone']?></td>
                 <td><?= $row['Type_idType']?></td>
