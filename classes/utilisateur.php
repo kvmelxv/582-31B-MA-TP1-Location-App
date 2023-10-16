@@ -51,6 +51,17 @@ class Utilisateur extends PDO {
         return true;
     }
 
+
+    public function delete($table, $value, $field = 'username'){
+
+        $sql = "DELETE FROM $table WHERE $field = :value";
+        $stmt = $this->prepare($sql);
+        $stmt->bindValue(":value", $value);
+        $stmt->execute();
+        header('location:utilisateur-index.php');
+    }
+
+
     
 }
 
