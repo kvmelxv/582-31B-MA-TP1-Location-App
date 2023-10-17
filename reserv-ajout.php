@@ -1,12 +1,8 @@
 <?php
 
-require_once('classes/reservation.php');
-require_once('classes/appartement.php');
-require_once('classes/utilisateur.php');
+require_once('classe/Crud.php');
 
-$reservation = new Reservation;
-$appartement = new Appartement;
-$utilisateur = new Utilisateur;
+$crud = new Crud;
 
 $errorMessage = '';
 
@@ -20,8 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     );
 
-    if ($reservation->validateFormData($data)) {
-        if ($reservation->insert('reservation', $data)) {
+    if ($crud->validateFormDataBook($data)) {
+        if ($crud->insert('reservation', $data)) {
             header('Location: reserv-index.php');
             exit;
         } else {
@@ -57,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label>Locataire</label>
         <select name="Utilisateur_Username">
         <?php
-        $usersWithType1 = $utilisateur->selectUsersWithType(1);
+        $usersWithType1 = $crud->selectUsersWithType(1);
         foreach ($usersWithType1 as $row) {
             $username = $row['Username'];
             echo "<option value='$username'>$username</option>";
@@ -67,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label>Appartement</label>
         <select name="Appartement_idAppartement">
             <?php 
-            $appartements = $appartement->select('appartement', 'Description');
+            $appartements = $crud->select('appartement', 'Description', 'DESC');
             foreach ($appartements as $row) {
                 $description = $row['Description'];
                 $idAppartement = $row['idAppartement'];

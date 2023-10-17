@@ -1,13 +1,13 @@
 <?php
 
-require_once('classes/Utilisateur.php');
+require_once('classe/CRUD.php');
 
 if (isset($_GET['username'])) {
     $username = $_GET['username'];
 
-    $utilisateur = new Utilisateur;
-    $types = $utilisateur->select('type', 'type');
-    $user = $utilisateur->selectId('Utilisateur', $username, 'Username');
+    $crud = new Crud;
+    $types = $crud->select('type', 'type', 'ASC');
+    $user = $crud->selectId('Utilisateur', $username, 'Username');
 
     if (!empty($user)) {
         $nom = $user['Nom'];

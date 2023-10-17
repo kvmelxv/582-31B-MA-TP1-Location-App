@@ -1,10 +1,20 @@
 <?php
-require_once('classes/reservation.php');
+require_once('classe/CRUD.php');
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $reservation = new Reservation;
-    $reservation->delete('reservation', $id);
+    $crud = new Crud;
+
+    // Désactive temporairement les contraintes de clé étrangère
+    $sql = "SET FOREIGN_KEY_CHECKS = 0;";
+    $crud->exec($sql);
+
+    // Effectue la suppression
+    $crud->delete('reservation', $id, 'id');
+
+    // Réactive les contraintes de clé étrangère
+    $sql = "SET FOREIGN_KEY_CHECKS = 1;";
+    $crud->exec($sql);
     
     header('Location: reserv-index.php');
     exit;

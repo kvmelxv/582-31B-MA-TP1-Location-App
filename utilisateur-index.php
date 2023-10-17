@@ -1,8 +1,8 @@
 <?php
 
-require('classes/utilisateur.php');
-$utilisateur = new utilisateur;
-$client = $utilisateur->select('utilisateur', 'Nom')
+require('classe/CRUD.php');
+$crud = new Crud;
+$client = $crud->select('utilisateur', 'Nom', 'ASC');
 
 ?>
 

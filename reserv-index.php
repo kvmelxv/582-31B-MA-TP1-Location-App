@@ -1,8 +1,8 @@
 <?php
 
-require('classes/reservation.php');
-$reservation = new Reservation;
-$Booking = $reservation->select('reservation', 'DateDebut')
+require('classe/CRUD.php');
+$crud = new Crud;
+$Booking = $crud->select('reservation', 'DateDebut', 'ASC')
 
 ?>
 

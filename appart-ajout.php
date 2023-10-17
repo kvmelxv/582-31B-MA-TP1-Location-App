@@ -1,7 +1,7 @@
 <?php
 
-require_once('classes/appartement.php');
-$appartement = new Appartement;
+require_once('classe/CRUD.php');
+$crud = new Crud;
 
 $errorMessage = '';
 
@@ -18,8 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     );
 
-    if ($appartement->validateFormData($data)) {
-        if ($appartement->insert('appartement', $data)) {
+    if ($crud->validateFormDataApp($data)) {
+        if ($crud->insert('appartement', $data)) {
             header('Location: appart-index.php');
             exit;
         } else {

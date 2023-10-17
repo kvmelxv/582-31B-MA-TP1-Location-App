@@ -1,8 +1,8 @@
 <?php
 
-require('classes/appartement.php');
-$appartement = new Appartement;
-$appart = $appartement->select('appartement', 'prix')
+require('classe/CRUD.php');
+$crud = new Crud;
+$appart = $crud->select('appartement', 'prix', 'ASC')
 
 ?>
 
@@ -37,7 +37,7 @@ $appart = $appartement->select('appartement', 'prix')
                 <td><?= $row['NombreChambre']?></a></td>
                 <td><?= $row['NombreSalleDeBain']?></td>
                 <td><?= $row['Surface']?></td>
-                <td><?= $row['Prix']?></td>
+                <td><?= $row['Prix']?> $</td>
                 <td><?= $row['Utilisateur_Username']?></td>
                 <td>
                     <div class="bloc-action">

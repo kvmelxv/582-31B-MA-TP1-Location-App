@@ -1,8 +1,8 @@
 <?php
 
-require_once('classes/Utilisateur.php');
-$utilisateur = new Utilisateur;
-$type = $utilisateur->select('type', 'type');
+require_once('classe/CRUD.php');
+$crud = new Crud;
+$type = $crud->select('type', 'type', 'ASC');
 
 $errorMessage = '';
 
@@ -17,8 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'Type_idType' => $_POST['Type_idType']
     );
 
-    if ($utilisateur->validateFormData($data)) {
-        if ($utilisateur->insert('utilisateur', $data)) {
+    if ($crud->validateFormData($data)) {
+        if ($crud->insert('utilisateur', $data)) {
             header('Location: utilisateur-index.php');
             exit;
         } else {

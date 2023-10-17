@@ -1,9 +1,9 @@
 <?php
 
-require_once('classes/appartement.php');
+require_once('classe/CRUD.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $appartement = new Appartement;
+    $crud = new Crud;
 
     $data = [
         'Description' => $_POST['description'], 
@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['idAppartement'];
 
     // Mettre à jour les données de l'appartement
-    $appartement->update('appartement', $data, 'idAppartement');
+    $crud->update('appartement', $data, 'idAppartement');
 
     // Rediriger l'utilisateur vers la liste des appartements
     header('Location: appart-index.php');

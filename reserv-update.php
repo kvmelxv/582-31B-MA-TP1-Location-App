@@ -1,12 +1,12 @@
 <?php
 
-require_once('classes/reservation.php');
+require_once('classe/CRUD.php');
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
-    $reservation = new Reservation;
-    $reservationUpDate = $reservation->selectId('reservation', $id, 'id');
+    $crud = new Crud;
+    $reservationUpDate = $crud->selectId('reservation', $id, 'id');
 
     if (!empty($reservationUpDate)) {
         $dateDebut = $reservationUpDate['DateDebut'];

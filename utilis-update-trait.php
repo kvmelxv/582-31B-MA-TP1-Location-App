@@ -1,9 +1,9 @@
 <?php
 
-require_once('classes/Utilisateur.php');
+require_once('classe/CRUD.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $utilisateur = new Utilisateur;
+    $crud = new Crud;
 
     $data = [
         'Username' => $_POST['username'], 
@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
 
     // Mettre à jour les données de l'utilisateur
-    $utilisateur->update('Utilisateur', $data, 'Username');
+    $crud->update('Utilisateur', $data, 'Username');
 
     // Rediriger l'utilisateur vers la liste des utilisateurs
     header('Location: utilisateur-index.php');

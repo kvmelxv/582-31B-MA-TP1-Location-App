@@ -1,12 +1,12 @@
 <?php
 
-require_once('classes/appartement.php');
+require_once('classe/CRUD.php');
 
 if (isset($_GET['idAppartement'])) {
     $id = $_GET['idAppartement'];
 
-    $appartement = new Appartement;
-    $appartUpDate = $appartement->selectId('appartement', $id, 'idAppartement');
+    $crud = new Crud;
+    $appartUpDate = $crud->selectId('appartement', $id, 'idAppartement');
 
     if (!empty($appartUpDate)) {
         $description = $appartUpDate['Description'];

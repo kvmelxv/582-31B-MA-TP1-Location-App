@@ -1,18 +1,18 @@
 <?php
 
-class Utilisateur extends PDO {
+class Crud extends PDO {
 
     public function __construct(){
         parent::__construct('mysql:host=localhost; dbname=locationappartement; port=3306; charset=utf8', 'root', '');
     }
 
-    public function select($table, $field='id', $order='ASC'){
+    public function select($table, $field, $order){
         $sql="SELECT * FROM $table ORDER BY $field $order";
         $stmt = $this->query($sql);
         return $stmt->fetchAll();
     }
 
-    public function selectId($table, $value, $field = 'id'){
+    public function selectId($table, $value, $field){
         $sql= "SELECT * FROM $table WHERE $field = '$value'";
         $stmt = $this->query($sql);
         $count = $stmt->rowCount();
@@ -51,17 +51,8 @@ class Utilisateur extends PDO {
      
     }
 
-    public function validateFormData($data) {
-
-        if (empty($data['username']) || empty($data['nom']) || empty($data['prenom']) || empty($data['telephone']) || empty($data['courriel']) || empty($data['Type_idType'])) {
-            return false;
-        }
-
-        return true;
-    }
-
-
-    public function delete($table, $value, $field = 'username'){
+    
+    public function delete($table, $value, $field){
 
         $sql = "DELETE FROM $table WHERE $field = :value";
         $stmt = $this->prepare($sql);
@@ -71,7 +62,7 @@ class Utilisateur extends PDO {
     }
 
 
-    public function update($table, $data, $field = 'Username') {
+    public function update($table, $data, $field) {
         $queryFields = [];
         foreach ($data as $key => $value) {
             $queryFields[] = "$key = :$key";
@@ -88,6 +79,33 @@ class Utilisateur extends PDO {
         $stmt->execute();
     
         header('Location: ' . $_SERVER['HTTP_REFERER']);
+    }
+
+    public function validateFormDataUser($data) {
+
+        if (empty($data['username']) || empty($data['nom']) || empty($data['prenom']) || empty($data['telephone']) || empty($data['courriel']) || empty($data['Type_idType'])) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public function validateFormDataApp($data) {
+
+        if (empty($data['description']) || empty($data['adresse']) || empty($data['NombreChambre']) || empty($data['NombreSalleDeBain']) || empty($data['surface']) || empty($data['prix']) || empty($data['Utilisateur_Username'])) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public function validateFormDataBook($data) {
+
+        if (empty($data['DateDebut']) || empty($data['DateFin'])) {
+            return false;
+        }
+
+        return true;
     }
 
 }
