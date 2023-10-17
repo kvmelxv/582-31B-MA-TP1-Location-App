@@ -15,21 +15,29 @@ th, td{
     text-align: center;
 }
 
+.bloc-action{
+  display: flex;
+  flex-flow: row;
+}
+
 .form-action {
   width: 80%;
+  margin: 5px 5px 0px 5px;
   padding: 0;
   border: none;
 }
 
 .form-action > input {
   width: 80%;
-  margin: auto;
   padding: 2px;
   cursor: pointer;
   border: 0.5px solid black;
 }
 
-
+.form-action > input:hover {
+  background-color: black;
+  color: white;
+}
 
 button {
   width: 20%;

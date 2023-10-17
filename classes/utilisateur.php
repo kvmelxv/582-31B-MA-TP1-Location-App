@@ -62,7 +62,25 @@ class Utilisateur extends PDO {
     }
 
 
+    public function update($table, $data, $field = 'Username') {
+        $queryFields = [];
+        foreach ($data as $key => $value) {
+            $queryFields[] = "$key = :$key";
+        }
+        $setClause = implode(", ", $queryFields);
     
+        $sql = "UPDATE $table SET $setClause WHERE $field = :$field";
+    
+        $stmt = $this->prepare($sql);
+        foreach ($data as $key => $value) {
+            $stmt->bindValue(":$key", $value);
+        }
+        $stmt->bindValue(":$field", $data[$field]);
+        $stmt->execute();
+    
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+    }
+
 }
 
 

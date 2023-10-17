@@ -38,10 +38,16 @@ $client = $utilisateur->select('utilisateur', 'Nom')
                 <td><?= $row['Telephone']?></td>
                 <td><?= $row['Type_idType']?></td>
                 <td>
-                    <form class="form-action" action="utilisateur-supp.php" method="GET">
-                        <input type="hidden" name="username" value="<?= $row['Username'] ?>">
-                        <input type="submit" value="Supprimer">
-                    </form>
+                    <div class="bloc-action">
+                        <form class="form-action" action="utilisateur-supp.php" method="GET">
+                            <input type="hidden" name="username" value="<?= $row['Username'] ?>">
+                            <input type="submit" value="Supprimer">
+                        </form>
+                        <form class="form-action" action="utilisateur-update.php" method="GET">
+                            <input type="hidden" name="username" value="<?= $row['Username'] ?>">
+                            <input type="submit" value="Modifier">
+                        </form>
+                    </div>   
                 </td>
             </tr>
         <?php
