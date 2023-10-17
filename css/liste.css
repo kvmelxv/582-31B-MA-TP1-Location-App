@@ -39,12 +39,22 @@ th, td{
   color: white;
 }
 
+div {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  margin: 1em;
+}
+
 button {
   width: 20%;
   padding: 0.5em;
+  margin: 5px 10px 5px 10px;
+  
 }
 
 a {
   text-decoration: none;
   color: black;
 }
+

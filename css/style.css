@@ -1,5 +1,5 @@
-@import url(utilis-ajout.css);
-@import url(utilis-liste.css);
+@import url(ajout.css);
+@import url(liste.css);
 
 body { 
     display: flex;

@@ -8,17 +8,23 @@
 </head>
 <body>
     <h1>Location d'appartement</h1>
-    <section>
-        <h2>lien des pages de type utilisateur</h2>
-        <ul>
-            <li><a href="utilisateur-index.php">Liste de tous les utlisateurs</a></li>
-        </ul>
-    </section>
-    <section>
-        <h2>Lien des pages de type appartement</h2>
-        <ul>
-            <li><a href="appart-index.php">Liste de tous les appartements</a></li>
-        </ul>
-    </section>    
+    <div class="contaner-index">
+        <section>
+            <h2>Section Utilisateur</h2>
+            <p>Dans cette section, vous avez la possibilité d'ajouter, de modifier et de supprimer des éléments en toute simplicité.</p>
+            <a href="utilisateur-index.php">Liste de tous les utlisateurs</a>     
+        </section>
+        <section>
+            <h2>Section Appartement</h2>
+            <p>Dans cette section, vous avez la possibilité d'ajouter, de modifier et de supprimer des éléments en toute simplicité.</p>
+            <a href="appart-index.php">Liste de tous les appartements</a>
+            
+        </section>   
+        <section>
+            <h2>Section Réservation</h2>
+            <p>Dans cette section, vous avez la possibilité d'ajouter, de modifier et de supprimer des éléments en toute simplicité.</p>
+            <a href="reserv-index.php">Liste de tous les reservations</a>   
+        </section>     
+    </div>
 </body>
 </html>

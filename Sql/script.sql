@@ -1,5 +1,3 @@
-<?php
-
 -- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
@@ -17,6 +15,16 @@ CREATE SCHEMA IF NOT EXISTS `LocationAppartement` DEFAULT CHARACTER SET utf8 ;
 USE `LocationAppartement` ;
 
 -- -----------------------------------------------------
+-- Table `LocationAppartement`.`Type`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `LocationAppartement`.`Type` (
+  `idType` INT NOT NULL AUTO_INCREMENT,
+  `type` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idType`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `LocationAppartement`.`Utilisateur`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `LocationAppartement`.`Utilisateur` (
@@ -25,8 +33,14 @@ CREATE TABLE IF NOT EXISTS `LocationAppartement`.`Utilisateur` (
   `Prenom` VARCHAR(50) NOT NULL,
   `Courriel` VARCHAR(45) NOT NULL,
   `Telephone` VARCHAR(12) NOT NULL,
-  `Type` ENUM('Locataire', 'Proprietaire') NOT NULL,
-  PRIMARY KEY (`Username`))
+  `Type_idType` INT NOT NULL,
+  PRIMARY KEY (`Username`),
+  INDEX `fk_Utilisateur_Type1_idx` (`Type_idType` ASC),
+  CONSTRAINT `fk_Utilisateur_Type1`
+    FOREIGN KEY (`Type_idType`)
+    REFERENCES `LocationAppartement`.`Type` (`idType`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -41,27 +55,12 @@ CREATE TABLE IF NOT EXISTS `LocationAppartement`.`Appartement` (
   `NombreSalleDeBain` INT NOT NULL,
   `Surface` VARCHAR(45) NOT NULL,
   `Prix` INT NOT NULL,
-  PRIMARY KEY (`idAppartement`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `LocationAppartement`.`Utilisateur_has_Appartement`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `LocationAppartement`.`Utilisateur_has_Appartement` (
   `Utilisateur_Username` VARCHAR(50) NOT NULL,
-  `Appartement_idAppartement` INT NOT NULL,
-  PRIMARY KEY (`Utilisateur_Username`, `Appartement_idAppartement`),
-  INDEX `fk_Utilisateur_has_Appartement_Appartement1_idx` (`Appartement_idAppartement` ASC),
-  INDEX `fk_Utilisateur_has_Appartement_Utilisateur_idx` (`Utilisateur_Username` ASC),
-  CONSTRAINT `fk_Utilisateur_has_Appartement_Utilisateur`
+  PRIMARY KEY (`idAppartement`),
+  INDEX `fk_Appartement_Utilisateur1_idx` (`Utilisateur_Username` ASC),
+  CONSTRAINT `fk_Appartement_Utilisateur1`
     FOREIGN KEY (`Utilisateur_Username`)
     REFERENCES `LocationAppartement`.`Utilisateur` (`Username`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Utilisateur_has_Appartement_Appartement1`
-    FOREIGN KEY (`Appartement_idAppartement`)
-    REFERENCES `LocationAppartement`.`Appartement` (`idAppartement`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -92,26 +91,6 @@ CREATE TABLE IF NOT EXISTS `LocationAppartement`.`Reservation` (
 ENGINE = InnoDB;
 
 
--- -----------------------------------------------------
--- Table `LocationAppartement`.`Commentaire`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `LocationAppartement`.`Commentaire` (
-  `idCommentaire` INT NOT NULL AUTO_INCREMENT,
-  `Texte` TEXT NULL,
-  `DatePublication` DATE NULL,
-  `Utilisateur_Username` VARCHAR(50) NOT NULL,
-  PRIMARY KEY (`idCommentaire`),
-  INDEX `fk_Commentaire_Utilisateur1_idx` (`Utilisateur_Username` ASC),
-  CONSTRAINT `fk_Commentaire_Utilisateur1`
-    FOREIGN KEY (`Utilisateur_Username`)
-    REFERENCES `LocationAppartement`.`Utilisateur` (`Username`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
-?>

@@ -12,14 +12,14 @@ class Appartement extends PDO {
         return $stmt->fetchAll();
     }
 
-    public function selectId($table, $value, $field = 'id'){
+    public function selectId($table, $value, $field = 'idAppartement'){
         $sql= "SELECT * FROM $table WHERE $field = '$value'";
         $stmt = $this->query($sql);
         $count = $stmt->rowCount();
         if($count == 1){
             return $stmt->fetch();
         }else{
-            header('location:utilisateur-index.php');
+            header('location:appart-index.php');
         }  
     }
 
@@ -43,7 +43,7 @@ class Appartement extends PDO {
 
     public function validateFormData($data) {
 
-        if (empty($data['username']) || empty($data['nom']) || empty($data['prenom']) || empty($data['telephone']) || empty($data['courriel']) || empty($data['Type_idType'])) {
+        if (empty($data['description']) || empty($data['adresse']) || empty($data['NombreChambre']) || empty($data['NombreSalleDeBain']) || empty($data['surface']) || empty($data['prix'])) {
             return false;
         }
 
@@ -51,17 +51,17 @@ class Appartement extends PDO {
     }
 
 
-    public function delete($table, $value, $field = 'username'){
+    public function delete($table, $value, $field = 'idAppartement'){
 
-        $sql = "DELETE FROM $table WHERE $field = :value";
+        $sql = "DELETE FROM $table WHERE $field = :$field";
         $stmt = $this->prepare($sql);
-        $stmt->bindValue(":value", $value);
+        $stmt->bindValue(":$field", $value);
         $stmt->execute();
-        header('location:utilisateur-index.php');
+        header('location:appart-index.php');
     }
 
 
-    public function update($table, $data, $field = 'Username') {
+    public function update($table, $data, $field = 'idAppartement') {
         $queryFields = [];
         foreach ($data as $key => $value) {
             $queryFields[] = "$key = :$key";

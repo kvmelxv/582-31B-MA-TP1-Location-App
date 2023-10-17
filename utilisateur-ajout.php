@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Ajouter un utilisateur</title>
 </head>
 <body>
-    <h1>Ajouter un nouveau utilisateur</h1>
+    <h1>Ajouter un nouvel utilisateur</h1>
     <?php if (isset($errorMessage)) : ?>
         <div class="error-message">
             <?= $errorMessage ?>

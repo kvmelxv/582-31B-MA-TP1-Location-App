@@ -55,8 +55,11 @@ $client = $utilisateur->select('utilisateur', 'Nom')
         ?>
     </table>
     <br><br>
+    <div>
+    <button><a href="index.php">Page d'acceuil</a></button>
     <button><a href="utilisateur-ajout.php">Ajouter un utilisateur</a></button>
- 
+    </div>
+    
 </body>
 </html>
 

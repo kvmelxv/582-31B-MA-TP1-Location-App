@@ -23,6 +23,16 @@ class Utilisateur extends PDO {
         }  
     }
 
+    public function selectUsersWithType($typeId) {
+        $sql = "SELECT * FROM utilisateur WHERE Type_idType = :typeId";
+        $stmt = $this->prepare($sql);
+        $stmt->bindParam(':typeId', $typeId);
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+    
+
     public function insert($table, $data){
 
         $nomChamp = implode(", ",array_keys($data));
