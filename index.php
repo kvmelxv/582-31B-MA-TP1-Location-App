@@ -17,7 +17,7 @@
     <section>
         <h2>Lien des pages de type appartement</h2>
         <ul>
-            <li><a href="utilisateur-index.php">Liste de tous les utlisateurs</a></li>
+            <li><a href="appart-index.php">Liste de tous les appartements</a></li>
         </ul>
     </section>    
 </body>

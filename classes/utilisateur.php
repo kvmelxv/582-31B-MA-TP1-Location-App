@@ -38,8 +38,7 @@ class Utilisateur extends PDO {
         } else {
             return false;
         }
-    
-        
+     
     }
 
     public function validateFormData($data) {
@@ -82,6 +81,5 @@ class Utilisateur extends PDO {
     }
 
 }
-
 
 ?>
