@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['idAppartement'];
 
     // Mettre à jour les données de l'appartement
-    $crud->update('appartement', $data, 'idAppartement');
+    $crud->update('Appartement', $data, 'idAppartement');
 
     // Rediriger l'utilisateur vers la liste des appartements
     header('Location: appart-index.php');

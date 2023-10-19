@@ -5,19 +5,19 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema LocationAppartement
+-- Schema e2395368
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema LocationAppartement
+-- Schema e2395368
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `LocationAppartement` DEFAULT CHARACTER SET utf8 ;
-USE `LocationAppartement` ;
+CREATE SCHEMA IF NOT EXISTS `e2395368` DEFAULT CHARACTER SET utf8 ;
+USE `e2395368` ;
 
 -- -----------------------------------------------------
--- Table `LocationAppartement`.`Type`
+-- Table `e2395368`.`Type`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `LocationAppartement`.`Type` (
+CREATE TABLE IF NOT EXISTS `e2395368`.`Type` (
   `idType` INT NOT NULL AUTO_INCREMENT,
   `type` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idType`))
@@ -25,9 +25,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `LocationAppartement`.`Utilisateur`
+-- Table `e2395368`.`Utilisateur`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `LocationAppartement`.`Utilisateur` (
+CREATE TABLE IF NOT EXISTS `e2395368`.`Utilisateur` (
   `Username` VARCHAR(50) NOT NULL,
   `Nom` VARCHAR(50) NOT NULL,
   `Prenom` VARCHAR(50) NOT NULL,
@@ -38,16 +38,16 @@ CREATE TABLE IF NOT EXISTS `LocationAppartement`.`Utilisateur` (
   INDEX `fk_Utilisateur_Type1_idx` (`Type_idType` ASC),
   CONSTRAINT `fk_Utilisateur_Type1`
     FOREIGN KEY (`Type_idType`)
-    REFERENCES `LocationAppartement`.`Type` (`idType`)
+    REFERENCES `e2395368`.`Type` (`idType`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `LocationAppartement`.`Appartement`
+-- Table `e2395368`.`Appartement`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `LocationAppartement`.`Appartement` (
+CREATE TABLE IF NOT EXISTS `e2395368`.`Appartement` (
   `idAppartement` INT NOT NULL AUTO_INCREMENT,
   `Description` VARCHAR(255) NOT NULL,
   `Adresse` VARCHAR(255) NOT NULL,
@@ -60,16 +60,16 @@ CREATE TABLE IF NOT EXISTS `LocationAppartement`.`Appartement` (
   INDEX `fk_Appartement_Utilisateur1_idx` (`Utilisateur_Username` ASC),
   CONSTRAINT `fk_Appartement_Utilisateur1`
     FOREIGN KEY (`Utilisateur_Username`)
-    REFERENCES `LocationAppartement`.`Utilisateur` (`Username`)
+    REFERENCES `e2395368`.`Utilisateur` (`Username`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `LocationAppartement`.`Reservation`
+-- Table `e2395368`.`Reservation`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `LocationAppartement`.`Reservation` (
+CREATE TABLE IF NOT EXISTS `e2395368`.`Reservation` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `DateDebut` DATE NOT NULL,
   `DateFin` DATE NOT NULL,
@@ -80,12 +80,12 @@ CREATE TABLE IF NOT EXISTS `LocationAppartement`.`Reservation` (
   INDEX `fk_Reservation_Appartement1_idx` (`Appartement_idAppartement` ASC),
   CONSTRAINT `fk_Reservation_Utilisateur1`
     FOREIGN KEY (`Utilisateur_Username`)
-    REFERENCES `LocationAppartement`.`Utilisateur` (`Username`)
+    REFERENCES `e2395368`.`Utilisateur` (`Username`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Reservation_Appartement1`
     FOREIGN KEY (`Appartement_idAppartement`)
-    REFERENCES `LocationAppartement`.`Appartement` (`idAppartement`)
+    REFERENCES `e2395368`.`Appartement` (`idAppartement`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

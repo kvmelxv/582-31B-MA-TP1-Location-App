@@ -2,7 +2,7 @@
 
 require('classe/CRUD.php');
 $crud = new Crud;
-$Booking = $crud->select('reservation', 'DateDebut', 'ASC')
+$Booking = $crud->select('Reservation', 'DateDebut', 'ASC')
 
 ?>
 

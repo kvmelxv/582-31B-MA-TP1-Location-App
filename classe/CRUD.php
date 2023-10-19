@@ -3,7 +3,7 @@
 class Crud extends PDO {
 
     public function __construct(){
-        parent::__construct('mysql:host=localhost; dbname=locationappartement; port=3306; charset=utf8', 'root', '');
+        parent::__construct('mysql:host=localhost; dbname=e2395368; port=3306; charset=utf8', 'e2395368', 'v98WPmdZVlChAT7JtvhZ');
     }
 
     public function select($table, $field, $order){
@@ -24,7 +24,7 @@ class Crud extends PDO {
     }
 
     public function selectUsersWithType($typeId) {
-        $sql = "SELECT * FROM utilisateur WHERE Type_idType = :typeId";
+        $sql = "SELECT * FROM Utilisateur WHERE Type_idType = :typeId";
         $stmt = $this->prepare($sql);
         $stmt->bindParam(':typeId', $typeId);
         $stmt->execute();

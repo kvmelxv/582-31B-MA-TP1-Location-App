@@ -6,7 +6,7 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
     $crud = new Crud;
-    $reservationUpDate = $crud->selectId('reservation', $id, 'id');
+    $reservationUpDate = $crud->selectId('Reservation', $id, 'id');
 
     if (!empty($reservationUpDate)) {
         $dateDebut = $reservationUpDate['DateDebut'];

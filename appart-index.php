@@ -2,7 +2,7 @@
 
 require('classe/CRUD.php');
 $crud = new Crud;
-$appart = $crud->select('appartement', 'prix', 'ASC')
+$appart = $crud->select('Appartement', 'prix', 'ASC')
 
 ?>
 

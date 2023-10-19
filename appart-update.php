@@ -6,7 +6,7 @@ if (isset($_GET['idAppartement'])) {
     $id = $_GET['idAppartement'];
 
     $crud = new Crud;
-    $appartUpDate = $crud->selectId('appartement', $id, 'idAppartement');
+    $appartUpDate = $crud->selectId('Appartement', $id, 'idAppartement');
 
     if (!empty($appartUpDate)) {
         $description = $appartUpDate['Description'];

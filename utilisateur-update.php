@@ -6,7 +6,7 @@ if (isset($_GET['username'])) {
     $username = $_GET['username'];
 
     $crud = new Crud;
-    $types = $crud->select('type', 'type', 'ASC');
+    $types = $crud->select('Type', 'type', 'ASC');
     $user = $crud->selectId('Utilisateur', $username, 'Username');
 
     if (!empty($user)) {

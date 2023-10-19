@@ -10,7 +10,7 @@ if (isset($_GET['id'])) {
     $crud->exec($sql);
 
     // Effectue la suppression
-    $crud->delete('reservation', $id, 'id');
+    $crud->delete('Reservation', $id, 'id');
 
     // Réactive les contraintes de clé étrangère
     $sql = "SET FOREIGN_KEY_CHECKS = 1;";

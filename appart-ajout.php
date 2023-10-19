@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     );
 
     if ($crud->validateFormDataApp($data)) {
-        if ($crud->insert('appartement', $data)) {
+        if ($crud->insert('Appartement', $data)) {
             header('Location: appart-index.php');
             exit;
         } else {

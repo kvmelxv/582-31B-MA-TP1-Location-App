@@ -1,6 +1,6 @@
 <?php
 
-require_once('classe/Crud.php');
+require_once('classe/CRUD.php');
 
 $crud = new Crud;
 
@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     );
 
     if ($crud->validateFormDataBook($data)) {
-        if ($crud->insert('reservation', $data)) {
+        if ($crud->insert('Reservation', $data)) {
             header('Location: reserv-index.php');
             exit;
         } else {
@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label>Appartement</label>
         <select name="Appartement_idAppartement">
             <?php 
-            $appartements = $crud->select('appartement', 'Description', 'DESC');
+            $appartements = $crud->select('Appartement', 'Description', 'DESC');
             foreach ($appartements as $row) {
                 $description = $row['Description'];
                 $idAppartement = $row['idAppartement'];

@@ -2,7 +2,7 @@
 
 require('classe/CRUD.php');
 $crud = new Crud;
-$client = $crud->select('utilisateur', 'Nom', 'ASC');
+$client = $crud->select('Utilisateur', 'Nom', 'ASC');
 
 ?>
 

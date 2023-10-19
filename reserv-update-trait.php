@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ];
 
     // Mettre à jour les données de la réservation
-    $crud->update('reservation', $data, 'id');
+    $crud->update('Reservation', $data, 'id');
 
     // Rediriger l'utilisateur vers la liste des réservations
     header('Location: reserv-index.php');
